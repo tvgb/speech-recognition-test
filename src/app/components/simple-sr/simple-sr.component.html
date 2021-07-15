@@ -1,0 +1,28 @@
+<div class="c">
+  <h1>
+    Trykk på knappen og velg en farge
+  </h1>
+  <div class="colours-box">
+    <span *ngFor="let colour of colours" [ngStyle]="{'background': '#' + getColour(colour)}">
+      {{ colour }}
+    </span>
+  </div>
+  <button *ngIf="!listening" (click)="startSr()">
+    Start stemmegjenkjenning
+  </button>
+  <div *ngIf="listening" class="listening">
+    Lytter etter farge
+    <span>
+      {{ dots }}
+    </span>
+  </div>
+
+  <div class="selected-colour-c">
+    <h2>
+      Du har valgt fargen:
+    </h2>
+    <div class="selected-colour" [ngStyle]="{'background': '#' + currentBgColour}">
+      {{ currentColourName }}
+    </div>
+  </div>
+</div>

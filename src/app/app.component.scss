@@ -1,0 +1,32 @@
+nav {
+  background-color: #2f4f4f;
+}
+
+.crumbs {
+  margin: 0px;
+  height: 50px;
+}
+
+.crumbs ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.crumbs li {
+  list-style-type: none;
+  float: right;
+}
+
+.crumbs li > a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px 16px;
+  text-decoration: none;
+}
+
+.crumbs li > a:hover {
+  background-color: rgba($color: #FFFFFF, $alpha: .05);
+}
