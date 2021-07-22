@@ -1,1 +1,28 @@
-<p>search-sr works!</p>
+<div class="c">
+  <h1>
+    Søk etter en ressurs
+  </h1>
+
+  <div class="input-field">
+    {{ query }}
+  </div>
+
+  <button *ngIf="!isSearching" (click)="listenForQuery()">
+    Trykk her for å søke
+  </button>
+
+  <div *ngIf="isSearching" class="loader"></div>
+
+
+  <table>
+    <tr>
+      <th>Navn</th> <th>Pris</th>
+    </tr>
+    <tr *ngFor="let resource of resources">
+      <td> {{ resource.name }}  </td> <td> {{ resource.price }} </td>
+    </tr>
+    <tr *ngIf="resources.length === 0">
+      <td style="text-align: center;" colspan="2"> Ingen resultater </td>
+    </tr>
+  </table>
+</div>

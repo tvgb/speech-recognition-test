@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 
 declare const webkitSpeechRecognition: any;
-declare const webkitSpeechGrammarList: any;
-declare const webkitSpeechRecognitionEvent: any;
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +34,7 @@ export class SrService {
     return res;
   }
 
-  listenForWords(lang = 'nb-NO'): Subject<string> {
+  listenForSentences(lang = 'nb-NO'): Subject<string> {
     const sub = new Subject<string>();
 
     this.speachRecognition.continuous = true;
@@ -44,11 +42,31 @@ export class SrService {
     this.speachRecognition.interimResults = true;
     this.speachRecognition.maxAlternatives = 1;
 
+    let text = '';
+    let currentText = '';
+    let resultIndex = 0;
+
+    this.startSr();
+
     this.speachRecognition.onresult = (event) => {
-      console.log(event.results[0][0].transcript);
+      if (resultIndex !== event.resultIndex) {
+        text += currentText + '. ';
+        resultIndex = event.resultIndex;
+      }
+
+      currentText = event.results[event.resultIndex][0].transcript;
+      sub.next(text + currentText);
     }
 
     return sub;
+  }
+
+  stopSr(): void {
+    try {
+      this.speachRecognition.stop();
+    } catch (error) {
+      console.log(error.messsage);
+    }
   }
 
   private startSr(): void {

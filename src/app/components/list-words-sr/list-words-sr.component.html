@@ -1,3 +1,14 @@
 <div class="c">
-
+	<h1>
+		Trykk på knappen og begynn å snakk
+	</h1>
+	<div class="text-box">
+    {{ text }}
+	</div>
+	<button *ngIf="!isRecording" (click)="startListenForSentences()">
+    Start opptak
+	</button>
+  <button class="stopListeningButton" *ngIf="isRecording" (click)="stopListenForSentences()">
+    Stopp opptak
+	</button>
 </div>

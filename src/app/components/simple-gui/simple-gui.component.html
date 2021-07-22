@@ -1,0 +1,46 @@
+<div class="c">
+  <h1> Testgrensesnitt for navigering </h1>
+
+  <div class="c2">
+    <div class="projects">
+      <h2> Projekter </h2>
+      <table>
+        <tr>
+          <th>Navn</th>
+        </tr>
+        <tr *ngFor="let project of projects; let i = index">
+          <td> {{ project.name }}  </td> <td class="button-td" [ngClass]="{ 'selected': i === selectedProjectIndex }" (click)="selectProject(i)"> velg </td>
+        </tr>
+        <tr *ngIf="projects.length === 0">
+          <td style="text-align: center;" colspan="2"> Ingen prosjekter </td>
+        </tr>
+      </table>
+    </div>
+    <div class="resources">
+      <h2> Ressurser </h2>
+      <table>
+        <tr>
+          <th>Navn</th> <th>Pris</th>
+        </tr>
+        <tr *ngFor="let resource of resources">
+          <td> {{ resource.name }}  </td> <td> {{ resource.price }} </td>
+        </tr>
+        <tr *ngIf="resources.length === 0">
+          <td style="text-align: center;" colspan="2"> Ingen resultater </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="button-wrapper">
+    <button *ngIf="!isSearching" (click)="listenForQuery()">
+      Gi kommando
+    </button>
+
+
+    <div *ngIf="isSearching" class="loader"></div>
+
+    <h3 class="feed-back-string">
+      {{ feedBackString }}
+    </h3>
+  </div>
+</div>

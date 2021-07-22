@@ -7,11 +7,6 @@
   flex-direction: column;
 }
 
-h1 {
-  font-size: 24px;
-  margin-bottom: 40px;
-}
-
 .colours-box {
   margin-bottom: 50px;
 }
@@ -21,17 +16,6 @@ h1 {
   margin: 1px;
   border-radius: 2px;
   width: 60px;
-}
-
-button {
-  padding: 20px;
-  background-color: #357367;
-  font-weight: 500;
-  color: white;
-  box-shadow: none;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 .selected-colour-c {

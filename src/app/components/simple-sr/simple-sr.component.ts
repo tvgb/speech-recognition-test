@@ -9,20 +9,15 @@ import { SrService } from 'src/app/services/sr.service';
 export class SimpleSrComponent implements OnInit {
 
   colours: string[];
-  // grammar: string;
   currentBgColour = 'FFFFFF';
   currentColourName = 'hvit';
   listening = false;
   dots = '...';
 
   constructor(private changes: ChangeDetectorRef, private sr: SrService) {
-
     this.colours = [
       'hvit', 'blå', 'grønn', 'gul', 'rød', 'brun', 'rosa', 'beige'
-    ];
-
-    // this.grammar = `#JSGF V1.0; grammar colors; public <color> = ${this.colours.join(' | ')};`
-
+    ]
   }
 
   ngOnInit(): void {
